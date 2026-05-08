@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Innovation University — Dress Code Guidelines</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    body{font-family:'Inter',sans-serif;background:#050505;color:#fff;cursor:none}
+    .font-serif{font-family:'Playfair Display',serif}
+    #cursor-dot{width:8px;height:8px;background:#a78bfa;border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform .1s;mix-blend-mode:difference}
+    #cursor-ring{width:40px;height:40px;border:1.5px solid rgba(167,139,250,.4);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:transform .15s,width .3s,height .3s,border-color .3s}
+    #cursor-ring.hovering{width:60px;height:60px;border-color:rgba(167,139,250,.7)}
+    #spotlight{width:600px;height:600px;background:radial-gradient(circle,rgba(124,58,237,.06)0%,transparent 70%);border-radius:50%;position:fixed;pointer-events:none;z-index:1}
+    #scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#7c3aed,#a78bfa,#c4b5fd);z-index:9999;transition:width .05s linear}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:#050505}::-webkit-scrollbar-thumb{background:#7c3aed;border-radius:2px}
+    @keyframes fadeInUp{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+    .animate-entry{opacity:0;animation:fadeInUp .8s ease-out forwards}
+    .delay-1{animation-delay:.15s}.delay-2{animation-delay:.3s}.delay-3{animation-delay:.45s}.delay-4{animation-delay:.6s}.delay-5{animation-delay:.75s}.delay-6{animation-delay:.9s}
+    .text-gradient{background:linear-gradient(to bottom,#fff,#737373);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+    .shimmer-text{background:linear-gradient(90deg,#7c3aed 0%,#a78bfa 25%,#c4b5fd 50%,#a78bfa 75%,#7c3aed 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+    .tab-btn{position:relative;transition:all .3s}.tab-btn::after{content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%) scaleX(0);width:60%;height:2px;background:#7c3aed;transition:transform .3s;border-radius:1px}.tab-btn.active{color:#a78bfa}.tab-btn.active::after{transform:translateX(-50%) scaleX(1)}.tab-btn:hover{color:#c4b5fd}
+    .tilt-card{transform-style:preserve-3d;transition:transform .1s,border-color .4s,box-shadow .4s}.tilt-card:hover{border-color:rgba(124,58,237,.35);box-shadow:0 30px 60px -15px rgba(0,0,0,.6),0 0 40px rgba(124,58,237,.08)}
+    #noise{position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px}
+    .reveal{opacity:0;transform:translateY(30px);transition:all .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}.float-anim{animation:float 3s ease-in-out infinite}
+    .logo-black-bg{background:#000;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;padding:10px 20px}
+    .logo-black-bg-sm{background:#000;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;padding:6px 14px}
+    .logo-black-bg-lg{background:#000;border-radius:16px;display:inline-flex;align-items:center;justify-content:center;padding:16px 32px;position:relative;overflow:hidden}
+    @keyframes borderRotate{0%{--angle:0deg}100%{--angle:360deg}}@property --angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+    .logo-black-bg-lg::before{content:'';position:absolute;inset:-2px;border-radius:18px;padding:2px;z-index:-1;background:conic-gradient(from var(--angle,0deg),#7c3aed,#a78bfa,#c4b5fd,#7c3aed);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:borderRotate 4s linear infinite}
+    .typewriter{overflow:hidden;white-space:nowrap;border-right:2px solid #7c3aed;animation:typing 2s steps(24) .8s forwards,blink .7s step-end infinite;width:0;display:inline-block}
+    @keyframes typing{0%{width:0}100%{width:100%}}@keyframes blink{50%{border-color:transparent}}
+    .stat-number{font-variant-numeric:tabular-nums}
+    .tool-option{transition:all .3s;cursor:none}.tool-option:hover{background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.4)}.tool-option.selected{background:rgba(124,58,237,.2);border-color:#7c3aed;box-shadow:0 0 20px rgba(124,58,237,.15)}
+    .result-card{transition:all .5s cubic-bezier(.4,0,.2,1)}
+
+    @keyframes kenBurns{0%{transform:scale(1)}100%{transform:scale(1.12)}}
+    .ken-burns{animation:kenBurns 25s ease-in-out infinite alternate}
+    .hero-bg-img{position:absolute;inset:0;background-size:cover;background-position:center 30%}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,5,5,.35) 0%,rgba(5,5,5,.6) 40%,rgba(5,5,5,.92) 80%,rgba(5,5,5,1) 100%)}
+
+    .cat-photo{position:relative;overflow:hidden;border-radius:16px;width:100%;height:100%;min-height:320px}
+    .cat-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;transition:transform .7s cubic-bezier(.4,0,.2,1),filter .7s ease}
+    .cat-photo:hover img{transform:scale(1.05);filter:brightness(1.1)}
+    .cat-photo-overlay{position:absolute;inset:0;pointer-events:none}
+
+    .gallery-item{position:relative;overflow:hidden;border-radius:16px;cursor:none}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.4,0,.2,1),filter .7s ease}
+    .gallery-item:hover img{transform:scale(1.07);filter:brightness(1.15) saturate(1.1)}
+    .gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,.75) 0%,transparent 55%);transition:opacity .4s}
+    .gallery-item:hover::after{opacity:.9}
+    .gallery-label{position:absolute;bottom:0;left:0;right:0;padding:20px;z-index:2;transform:translateY(8px);opacity:0;transition:all .4s cubic-bezier(.4,0,.2,1)}
+    .gallery-item:hover .gallery-label{transform:translateY(0);opacity:1}
+    .gallery-category{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+
+    .lightbox{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.94);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s;backdrop-filter:blur(12px)}
+    .lightbox.active{opacity:1;pointer-events:auto}
+    .lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:12px;box-shadow:0 40px 80px rgba(0,0,0,.6)}
+    .lightbox-close{position:absolute;top:24px;right:24px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;z-index:10001}
+    .lightbox-close:hover{background:rgba(255,255,255,.15);transform:scale(1.1)}
+    .lightbox-caption{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);text-align:center;color:#a3a3a3;font-size:.85rem;font-weight:300;letter-spacing:.05em}
+
+    .occasion-photo{position:relative;overflow:hidden}
+    .occasion-photo img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+    .occasion-photo:hover img{transform:scale(1.06)}
+    .occasion-gradient{position:absolute;inset:0}
+
+    .quote-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.15;filter:blur(1px)}
+    .quote-gradient{position:absolute;inset:0;background:linear-gradient(145deg,rgba(124,58,237,.3),rgba(5,5,5,.85),rgba(5,5,5,.9))}
+
+    .vis-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:10px;font-size:12px;font-weight:500;backdrop-filter:blur(8px);transition:all .3s}
+    .vis-tag-green{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:#86efac}
+    .vis-tag-red{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#fca5a5}
+    .vis-tag-icon{font-size:14px}
+
+    .result-img-box{position:relative;border-radius:16px;overflow:hidden;height:100%;min-height:220px;background:#0a0a0a}
+    .result-img-box img{width:100%;height:100%;object-fit:cover;object-position:top center;opacity:.8;transition:opacity .3s}
+    .result-img-box:hover img{opacity:1}
+    .result-img-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.2) 50%, transparent 100%)}
+
+    .ceremony-img-custom { object-position: top center !important; }
+
+    @media(max-width:768px){body{cursor:auto}#cursor-dot,#cursor-ring,#spotlight{display:none!important}.gallery-label{opacity:1;transform:translateY(0)}.cat-photo{min-height:240px}}
+    @media print{body{background:#fff;color:#000;cursor:auto}.text-gradient,.shimmer-text{-webkit-text-fill-color:#000;background:none}.no-print{display:none}#cursor-dot,#cursor-ring,#spotlight,#noise,#scroll-progress,.lightbox{display:none!important}.logo-black-bg,.logo-black-bg-sm,.logo-black-bg-lg{background:#fff;border:1px solid #e5e5e5}.logo-black-bg-lg::before{display:none}.cat-photo-overlay,.occasion-gradient,.quote-bg,.quote-gradient,.hero-overlay{display:none}}
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <div id="noise"></div>
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  <div id="spotlight"></div>
+  <div id="scroll-progress"></div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()"><iconify-icon icon="lucide:x" width="20" style="color:#d4d4d4;"></iconify-icon></button>
+    <img id="lightbox-img" src="" alt="" />
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 no-print" style="background:rgba(5,5,5,.8);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.04);">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="logo-black-bg-sm"><img src="https://z-cdn-media.chatglm.cn/files/f13f2cac-b258-4d07-b6b7-6fc968f993c5.png?auth_key=1877594471-590858ac59f748deb007259e9651a911-0-52bcbf36cfbcce0f5b2ea10320ec5a7d" alt="Logo" class="h-7 object-contain" /></div>
+      <div class="hidden md:flex items-center gap-8 text-sm text-neutral-400">
+        <a href="#categories" class="hover:text-violet-400 transition-colors">Categories</a>
+        <a href="#gallery" class="hover:text-violet-400 transition-colors">Gallery</a>
+        <a href="#tool" class="hover:text-violet-400 transition-colors">Dress Checker</a>
+        <a href="#occasions" class="hover:text-violet-400 transition-colors">Occasions</a>
+      </div>
+      <button onclick="window.print()" class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105" style="background:rgba(124,58,237,.15);color:#a78bfa;border:1px solid rgba(124,58,237,.3);"><iconify-icon icon="lucide:printer" width="16"></iconify-icon><span class="hidden sm:inline">Print</span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="relative min-h-[92vh] flex flex-col items-center justify-center text-center px-6 pt-20 overflow-hidden">
+    <div class="hero-bg-img ken-burns" style="background-image:url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1400&q=80');"></div>
+    <div class="hero-overlay"></div>
+    <div class="relative z-10 flex flex-col items-center">
+      <div class="animate-entry mb-6"><div class="logo-black-bg-lg float-anim"><img src="https://z-cdn-media.chatglm.cn/files/f13f2cac-b258-4d07-b6b7-6fc968f993c5.png?auth_key=1877594471-590858ac59f748deb007259e9651a911-0-52bcbf36cfbcce0f5b2ea10320ec5a7d" alt="Innovation University" class="h-12 md:h-14 object-contain" /></div></div>
+      <div class="animate-entry delay-1 mb-8 h-8 flex items-center justify-center"><span class="text-xs uppercase tracking-[.35em] font-medium shimmer-text typewriter">Learn · Evolve · Innovate</span></div>
+      <div class="animate-entry delay-2 mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium uppercase tracking-widest" style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);color:#a78bfa;"><iconify-icon icon="lucide:sparkles" width="14"></iconify-icon>Official Dress Code Guidelines</div>
+      <h1 class="animate-entry delay-3 font-serif text-5xl md:text-7xl lg:text-8xl font-normal tracking-tight leading-none mb-5 text-gradient">Dress Code</h1>
+      <p class="animate-entry delay-4 font-serif text-2xl md:text-3xl text-neutral-500 italic mb-8">Guidelines for Every Occasion</p>
+      <p class="animate-entry delay-5 max-w-2xl text-neutral-400 text-base font-light leading-relaxed mb-10">At Innovation University, your appearance reflects your professionalism and respect for the academic environment. Dress the part of the future you're building.</p>
+      <div class="animate-entry delay-6 flex flex-wrap justify-center gap-8 md:gap-12">
+        <div class="text-center"><p class="stat-number text-3xl md:text-4xl font-light text-violet-400" data-target="4">0</p><p class="text-neutral-600 text-xs uppercase tracking-widest mt-1">Dress Levels</p></div>
+        <div class="w-px h-12" style="background:rgba(124,58,237,.2);"></div>
+        <div class="text-center"><p class="stat-number text-3xl md:text-4xl font-light text-green-400" data-target="12">0</p><p class="text-neutral-600 text-xs uppercase tracking-widest mt-1">Do's</p></div>
+        <div class="w-px h-12" style="background:rgba(124,58,237,.2);"></div>
+        <div class="text-center"><p class="stat-number text-3xl md:text-4xl font-light text-red-400" data-target="6">0</p><p class="text-neutral-600 text-xs uppercase tracking-widest mt-1">Don'ts</p></div>
+        <div class="w-px h-12" style="background:rgba(124,58,237,.2);"></div>
+        <div class="text-center"><p class="stat-number text-3xl md:text-4xl font-light text-blue-400" data-target="7">0</p><p class="text-neutral-600 text-xs uppercase tracking-widest mt-1">Occasions</p></div>
+      </div>
+    </div>
+    <div class="animate-entry delay-6 flex flex-col items-center gap-2 text-neutral-600 mt-12 no-print relative z-10"><span class="text-xs uppercase tracking-widest">Scroll to explore</span><iconify-icon icon="lucide:chevron-down" width="20" class="animate-bounce"></iconify-icon></div>
+  </header>
+
+  <!-- DRESS CHECKER -->
+  <section id="tool" class="py-24 px-6 reveal">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-xs font-medium uppercase tracking-widest text-violet-400 mb-4">Interactive Tool</p>
+        <h2 class="font-serif text-4xl md:text-5xl tracking-tight mb-4 text-gradient">What Should I Wear?</h2>
+      </div>
+      <div class="rounded-3xl p-8 md:p-12 relative overflow-hidden" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);">
+        <div class="absolute -top-32 -right-32 w-64 h-64 rounded-full opacity-[.04] pointer-events-none" style="background:radial-gradient(circle,#7c3aed,transparent 70%);"></div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+          <button class="tool-option rounded-xl p-4 text-center" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);" data-occasion="lecture" onclick="selectOccasion(this)"><iconify-icon icon="lucide:presentation" width="24" style="color:#a78bfa;" class="mb-2 block"></iconify-icon><span class="text-sm font-medium text-neutral-300">Lecture</span></button>
+          <button class="tool-option rounded-xl p-4 text-center" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);" data-occasion="lab" onclick="selectOccasion(this)"><iconify-icon icon="lucide:flask-conical" width="24" style="color:#ef4444;" class="mb-2 block"></iconify-icon><span class="text-sm font-medium text-neutral-300">Laboratory</span></button>
+          <button class="tool-option rounded-xl p-4 text-center" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);" data-occasion="exam" onclick="selectOccasion(this)"><iconify-icon icon="lucide:file-check-2" width="24" style="color:#3b82f6;" class="mb-2 block"></iconify-icon><span class="text-sm font-medium text-neutral-300">Exam</span></button>
+          <button class="tool-option rounded-xl p-4 text-center" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);" data-occasion="ceremony" onclick="selectOccasion(this)"><iconify-icon icon="lucide:award" width="24" style="color:#a78bfa;" class="mb-2 block"></iconify-icon><span class="text-sm font-medium text-neutral-300">Ceremony</span></button>
+          <button class="tool-option rounded-xl p-4 text-center" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);" data-occasion="library" onclick="selectOccasion(this)"><iconify-icon icon="lucide:book-open" width="24" style="color:#a78bfa;" class="mb-2 block"></iconify-icon><span class="text-sm font-medium text-neutral-300">Library</span></button>
+          <button class="tool-option rounded-xl p-4 text-center" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);" data-occasion="club" onclick="selectOccasion(this)"><iconify-icon icon="lucide:users" width="24" style="color:#22c55e;" class="mb-2 block"></iconify-icon><span class="text-sm font-medium text-neutral-300">Club</span></button>
+          <button class="tool-option rounded-xl p-4 text-center" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);" data-occasion="sports" onclick="selectOccasion(this)"><iconify-icon icon="lucide:dumbbell" width="24" style="color:#3b82f6;" class="mb-2 block"></iconify-icon><span class="text-sm font-medium text-neutral-300">Sports</span></button>
+          <button class="tool-option rounded-xl p-4 text-center" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);" data-occasion="presentation" onclick="selectOccasion(this)"><iconify-icon icon="lucide:mic" width="24" style="color:#f59e0b;" class="mb-2 block"></iconify-icon><span class="text-sm font-medium text-neutral-300">Presentation</span></button>
+        </div>
+        
+        <div id="tool-result" class="result-card opacity-0 translate-y-4" style="pointer-events:none;">
+          <div class="rounded-2xl overflow-hidden" style="background:rgba(124,58,237,.06);border:1px solid rgba(124,58,237,.15);">
+            <div class="grid md:grid-cols-2">
+              <div class="result-img-box">
+                <img id="result-img" src="" alt="Dress Code Example" />
+                <div class="result-img-overlay"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 z-10">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span id="result-badge-tool" class="px-2.5 py-1 rounded-md text-xs font-medium"></span>
+                    <span id="result-role-tool" class="px-2.5 py-1 rounded-md text-xs font-medium bg-white/5 text-neutral-400 border border-white/10"></span>
+                  </div>
+                  <h3 id="result-title-tool" class="text-2xl font-medium font-serif"></h3>
+                </div>
+              </div>
+              <div class="p-6 md:p-8">
+                <div class="mb-6">
+                  <p class="text-xs font-medium uppercase tracking-widest text-green-400 mb-3 flex items-center gap-2"><iconify-icon icon="lucide:check-circle" width="14"></iconify-icon> Wear This</p>
+                  <div id="result-wear" class="flex flex-wrap gap-2"></div>
+                </div>
+                <div class="h-px w-full mb-6" style="background:rgba(255,255,255,.06);"></div>
+                <div>
+                  <p class="text-xs font-medium uppercase tracking-widest text-red-400 mb-3 flex items-center gap-2"><iconify-icon icon="lucide:x-circle" width="14"></iconify-icon> Avoid This</p>
+                  <div id="result-avoid" class="flex flex-wrap gap-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section id="categories" class="py-24 px-6 reveal">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-xs font-medium uppercase tracking-widest text-violet-400 mb-4">Dress Categories</p>
+        <h2 class="font-serif text-4xl md:text-5xl tracking-tight mb-4 text-gradient">Four Levels of Attire</h2>
+      </div>
+      <div class="flex flex-wrap justify-center gap-2 md:gap-6 mb-12 no-print">
+        <button class="tab-btn active text-sm font-medium pb-2 px-1 text-neutral-400" data-tab="formal" onclick="switchTab('formal')"><iconify-icon icon="lucide:briefcase" width="16" class="mr-1 align-middle"></iconify-icon>Formal</button>
+        <button class="tab-btn text-sm font-medium pb-2 px-1 text-neutral-400" data-tab="smart" onclick="switchTab('smart')"><iconify-icon icon="lucide:user-check" width="16" class="mr-1 align-middle"></iconify-icon>Smart Casual</button>
+        <button class="tab-btn text-sm font-medium pb-2 px-1 text-neutral-400" data-tab="casual" onclick="switchTab('casual')"><iconify-icon icon="lucide:coffee" width="16" class="mr-1 align-middle"></iconify-icon>Casual</button>
+        <button class="tab-btn text-sm font-medium pb-2 px-1 text-neutral-400" data-tab="restricted" onclick="switchTab('restricted')"><iconify-icon icon="lucide:shield-x" width="16" class="mr-1 align-middle"></iconify-icon>Restricted</button>
+      </div>
+      <div id="tab-content">
+        <!-- FORMAL -->
+        <div id="tab-formal" class="tab-panel">
+          <div class="grid md:grid-cols-2 gap-8 items-stretch">
+            <div class="cat-photo tilt-card" style="border:1px solid rgba(124,58,237,.12);" onclick="openLightbox('https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=1200&q=80','Formal Attire')">
+              <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80" alt="Formal business attire" loading="lazy" />
+              <div class="cat-photo-overlay" style="background:linear-gradient(135deg,rgba(124,58,237,.15) 0%,rgba(5,5,5,.4) 50%,rgba(5,5,5,.7) 100%);"></div>
+            </div>
+            <div class="flex flex-col justify-center py-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider mb-4 w-fit" style="background:rgba(124,58,237,.1);color:#a78bfa;border:1px solid rgba(124,58,237,.2);"><iconify-icon icon="lucide:target" width="14"></iconify-icon>Ceremonies & Defenses</div>
+              <h3 class="font-serif text-3xl mb-6 tracking-tight">Formal Attire</h3>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <div class="vis-tag vis-tag-green"><iconify-icon icon="lucide:shirt" class="vis-tag-icon"></iconify-icon> Full Suit</div>
+                <div class="vis-tag vis-tag-green"><iconify-icon icon="lucide:footprints" class="vis-tag-icon"></iconify-icon> Dress Shoes</div>
+                <div class="vis-tag vis-tag-green"><iconify-icon icon="lucide:ribbon" class="vis-tag-icon"></iconify-icon> Tie</div>
+                <div class="vis-tag vis-tag-green"><iconify-icon icon="lucide:palette" class="vis-tag-icon"></iconify-icon> Navy / Black / Grey</div>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Sneakers</div>
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Bright Colors</div>
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Jeans</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SMART CASUAL -->
+        <div id="tab-smart" class="tab-panel hidden">
+          <div class="grid md:grid-cols-2 gap-8 items-stretch">
+            <div class="cat-photo tilt-card" style="border:1px solid rgba(34,197,94,.1);" onclick="openLightbox('https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1200&q=80','Smart Casual')">
+              <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=800&q=80" alt="Smart Casual" loading="lazy" />
+              <div class="cat-photo-overlay" style="background:linear-gradient(135deg,rgba(34,197,94,.12) 0%,rgba(5,5,5,.4) 50%,rgba(5,5,5,.7) 100%);"></div>
+            </div>
+            <div class="flex flex-col justify-center py-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider mb-4 w-fit" style="background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.2);"><iconify-icon icon="lucide:target" width="14"></iconify-icon>Lectures & Seminars</div>
+              <h3 class="font-serif text-3xl mb-6 tracking-tight">Smart Casual</h3>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <div class="vis-tag vis-tag-green"><iconify-icon icon="lucide:shirt" class="vis-tag-icon"></iconify-icon> Polo / Collar</div>
+                <div class="vis-tag vis-tag-green"><iconify-icon icon="lucide:scissors" class="vis-tag-icon"></iconify-icon> Chinos / Dark Denim</div>
+                <div class="vis-tag vis-tag-green"><iconify-icon icon="lucide:footprints" class="vis-tag-icon"></iconify-icon> Loafers / Clean Sneakers</div>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Ripped Jeans</div>
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Flip Flops</div>
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Graphic Tees</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- CASUAL -->
+        <div id="tab-casual" class="tab-panel hidden">
+          <div class="grid md:grid-cols-2 gap-8 items-stretch">
+            <div class="cat-photo tilt-card" style="border:1px solid rgba(59,130,246,.1);" onclick="openLightbox('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80','Casual')">
+              <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80" alt="Casual" loading="lazy" />
+              <div class="cat-photo-overlay" style="background:linear-gradient(135deg,rgba(59,130,246,.12) 0%,rgba(5,5,5,.4) 50%,rgba(5,5,5,.7) 100%);"></div>
+            </div>
+            <div class="flex flex-col justify-center py-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider mb-4 w-fit" style="background:rgba(59,130,246,.1);color:#3b82f6;border:1px solid rgba(59,130,246,.2);"><iconify-icon icon="lucide:target" width="14"></iconify-icon>Library & Study</div>
+              <h3 class="font-serif text-3xl mb-6 tracking-tight">Casual Attire</h3>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <div class="vis-tag vis-tag-green"><iconify-icon icon="lucide:shirt" class="vis-tag-icon"></iconify-icon> T-Shirts / Hoodies</div>
+                <div class="vis-tag vis-tag-green"><iconify-icon icon="lucide:scissors" class="vis-tag-icon"></iconify-icon> Jeans / Shorts (Knee)</div>
+                <div class="vis-tag vis-tag-green"><iconify-icon icon="lucide:footprints" class="vis-tag-icon"></iconify-icon> Sneakers / Sandals</div>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Offensive Prints</div>
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Sleepwear</div>
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Crop Tops</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- RESTRICTED -->
+        <div id="tab-restricted" class="tab-panel hidden">
+          <div class="grid md:grid-cols-2 gap-8 items-stretch">
+            <div class="cat-photo tilt-card" style="border:1px solid rgba(239,68,68,.1);" onclick="openLightbox('https://images.unsplash.com/photo-1499939667766-4afceb292d05?auto=format&fit=crop&w=1200&q=80','Restricted')">
+              <img src="https://images.unsplash.com/photo-1499939667766-4afceb292d05?auto=format&fit=crop&w=800&q=80" alt="Restricted" loading="lazy" style="filter:brightness(.6) saturate(.5);" />
+              <div class="cat-photo-overlay" style="background:linear-gradient(135deg,rgba(239,68,68,.12) 0%,rgba(5,5,5,.4) 50%,rgba(5,5,5,.7) 100%);"></div>
+            </div>
+            <div class="flex flex-col justify-center py-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider mb-4 w-fit" style="background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.2);"><iconify-icon icon="lucide:ban" width="14"></iconify-icon>Never On Campus</div>
+              <h3 class="font-serif text-3xl mb-6 tracking-tight">Restricted Items</h3>
+              <div class="flex flex-wrap gap-2">
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Slippers</div>
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Pajamas</div>
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Beachwear</div>
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Torn Clothes</div>
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Vulgar Graphics</div>
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Crop Tops</div>
+                <div class="vis-tag vis-tag-red"><iconify-icon icon="lucide:x" class="vis-tag-icon"></iconify-icon> Drug/Alcohol Promo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="py-24 px-6 reveal">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-xs font-medium uppercase tracking-widest text-violet-400 mb-4">Style Inspiration</p>
+        <h2 class="font-serif text-4xl md:text-5xl tracking-tight mb-4 text-gradient">Campus Look Book</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[220px]">
+        <div class="gallery-item md:col-span-2 md:row-span-2 tilt-card" style="border:1px solid rgba(255,255,255,.06);" onclick="openLightbox('https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=1200&q=80','Formal')"><img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80" alt="Formal" loading="lazy" /><div class="gallery-label"><span class="gallery-category" style="background:rgba(124,58,237,.2);color:#c4b5fd;">Formal</span><p class="text-white text-sm font-medium">The Complete Suit</p></div></div>
+        <div class="gallery-item tilt-card" style="border:1px solid rgba(255,255,255,.06);" onclick="openLightbox('https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1200&q=80','Smart Casual')"><img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=600&q=80" alt="Smart casual" loading="lazy" /><div class="gallery-label"><span class="gallery-category" style="background:rgba(34,197,94,.15);color:#86efac;">Smart Casual</span><p class="text-white text-sm font-medium">Effortless Polish</p></div></div>
+        <div class="gallery-item tilt-card" style="border:1px solid rgba(255,255,255,.06);" onclick="openLightbox('https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=1200&q=80','Formal')"><img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=600&q=80" alt="Blazer" loading="lazy" /><div class="gallery-label"><span class="gallery-category" style="background:rgba(124,58,237,.2);color:#c4b5fd;">Formal</span><p class="text-white text-sm font-medium">The Blazer Look</p></div></div>
+        <div class="gallery-item tilt-card" style="border:1px solid rgba(255,255,255,.06);" onclick="openLightbox('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80','Casual')"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80" alt="Casual" loading="lazy" /><div class="gallery-label"><span class="gallery-category" style="background:rgba(59,130,246,.15);color:#93c5fd;">Casual</span><p class="text-white text-sm font-medium">Clean Simplicity</p></div></div>
+        <div class="gallery-item md:row-span-2 tilt-card" style="border:1px solid rgba(255,255,255,.06);" onclick="openLightbox('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80','Lab')"><img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80" alt="Lab" loading="lazy" /><div class="gallery-label"><span class="gallery-category" style="background:rgba(239,68,68,.15);color:#fca5a5;">Lab Safety</span><p class="text-white text-sm font-medium">Lab Ready</p></div></div>
+        <div class="gallery-item md:col-span-2 tilt-card" style="border:1px solid rgba(255,255,255,.06);" onclick="openLightbox('https://z-cdn-media.chatglm.cn/files/2e8d1e38-2cb8-4321-950c-0ea2ad573b8b.jpeg?auth_key=1878252603-60f6e02327874dd9bafb133135e76ee0-0-ca332396964d46708b39cf159fc07629','Graduation Ceremony')"><img src="https://z-cdn-media.chatglm.cn/files/2e8d1e38-2cb8-4321-950c-0ea2ad573b8b.jpeg?auth_key=1878252603-60f6e02327874dd9bafb133135e76ee0-0-ca332396964d46708b39cf159fc07629" alt="Graduation Suit" loading="lazy" class="ceremony-img-custom" /><div class="gallery-label"><span class="gallery-category" style="background:rgba(124,58,237,.2);color:#c4b5fd;">Ceremony</span><p class="text-white text-sm font-medium">Graduation Day</p></div></div>
+        <div class="gallery-item tilt-card" style="border:1px solid rgba(255,255,255,.06);" onclick="openLightbox('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80','Sports')"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=80" alt="Sports" loading="lazy" /><div class="gallery-label"><span class="gallery-category" style="background:rgba(59,130,246,.15);color:#93c5fd;">Athletic</span><p class="text-white text-sm font-medium">Game Ready</p></div></div>
+        <div class="gallery-item tilt-card" style="border:1px solid rgba(255,255,255,.06);" onclick="openLightbox('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1200&q=80','Presentation')"><img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80" alt="Presentation" loading="lazy" /><div class="gallery-label"><span class="gallery-category" style="background:rgba(245,158,11,.15);color:#fcd34d;">Presentation</span><p class="text-white text-sm font-medium">Command the Room</p></div></div>
+        <div class="gallery-item md:col-span-2 tilt-card" style="border:1px solid rgba(255,255,255,.06);" onclick="openLightbox('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1200&q=80','Library')"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=900&q=80" alt="Library" loading="lazy" /><div class="gallery-label"><span class="gallery-category" style="background:rgba(129,140,248,.15);color:#a5b4fc;">Casual</span><p class="text-white text-sm font-medium">Library Sessions</p></div></div>
+        <div class="gallery-item tilt-card" style="border:1px solid rgba(255,255,255,.06);" onclick="openLightbox('https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=1200&q=80','Smart Casual')"><img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=600&q=80" alt="Campus" loading="lazy" /><div class="gallery-label"><span class="gallery-category" style="background:rgba(34,197,94,.15);color:#86efac;">Smart Casual</span><p class="text-white text-sm font-medium">Campus Classic</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OCCASIONS -->
+  <section id="occasions" class="py-24 px-6 reveal">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-xs font-medium uppercase tracking-widest text-violet-400 mb-4">Context Matters</p>
+        <h2 class="font-serif text-4xl md:text-5xl tracking-tight mb-4 text-gradient">What to Wear Where</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="rounded-2xl overflow-hidden tilt-card" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);">
+          <div class="occasion-photo h-56 cursor-none relative" onclick="openLightbox('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80','Lectures')"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80" alt="University lecture" loading="lazy" /><div class="occasion-gradient" style="background:linear-gradient(to top,rgba(5,5,5,.95) 0%,rgba(5,5,5,.3) 50%,transparent 100%);"></div><div class="absolute top-3 right-3 z-10 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.25);backdrop-filter:blur(8px);"><iconify-icon icon="lucide:presentation" width="16" style="color:#22c55e;"></iconify-icon></div><div class="absolute bottom-0 left-0 right-0 p-5 z-10"><h3 class="font-medium text-lg mb-2">Lectures</h3><div class="flex flex-wrap gap-1.5"><span class="vis-tag vis-tag-green text-[10px] py-1 px-2"><iconify-icon icon="lucide:check" class="vis-tag-icon text-[10px]"></iconify-icon> Polo/Shirt</span><span class="vis-tag vis-tag-green text-[10px] py-1 px-2"><iconify-icon icon="lucide:check" class="vis-tag-icon text-[10px]"></iconify-icon> Chinos</span><span class="vis-tag vis-tag-red text-[10px] py-1 px-2"><iconify-icon icon="lucide:x" class="vis-tag-icon text-[10px]"></iconify-icon> Shorts</span><span class="vis-tag vis-tag-red text-[10px] py-1 px-2"><iconify-icon icon="lucide:x" class="vis-tag-icon text-[10px]"></iconify-icon> Slippers</span></div></div></div>
+        </div>
+        <div class="rounded-2xl overflow-hidden tilt-card" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);">
+          <div class="occasion-photo h-56 cursor-none relative" onclick="openLightbox('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80','Lab')"><img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80" alt="Lab" loading="lazy" /><div class="occasion-gradient" style="background:linear-gradient(to top,rgba(5,5,5,.95) 0%,rgba(5,5,5,.3) 50%,transparent 100%);"></div><div class="absolute top-3 right-3 z-10 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.25);backdrop-filter:blur(8px);"><iconify-icon icon="lucide:flask-conical" width="16" style="color:#ef4444;"></iconify-icon></div><div class="absolute bottom-0 left-0 right-0 p-5 z-10"><h3 class="font-medium text-lg mb-2">Laboratories</h3><div class="flex flex-wrap gap-1.5"><span class="vis-tag vis-tag-green text-[10px] py-1 px-2"><iconify-icon icon="lucide:check" class="vis-tag-icon text-[10px]"></iconify-icon> Closed Shoes</span><span class="vis-tag vis-tag-green text-[10px] py-1 px-2"><iconify-icon icon="lucide:check" class="vis-tag-icon text-[10px]"></iconify-icon> Long Pants</span><span class="vis-tag vis-tag-red text-[10px] py-1 px-2"><iconify-icon icon="lucide:x" class="vis-tag-icon text-[10px]"></iconify-icon> Sandals</span><span class="vis-tag vis-tag-red text-[10px] py-1 px-2"><iconify-icon icon="lucide:x" class="vis-tag-icon text-[10px]"></iconify-icon> Loose Sleeves</span></div></div></div>
+        </div>
+        <div class="rounded-2xl overflow-hidden tilt-card" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);">
+          <div class="occasion-photo h-56 cursor-none relative" onclick="openLightbox('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80','Exam')"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80" alt="Exam" loading="lazy" /><div class="occasion-gradient" style="background:linear-gradient(to top,rgba(5,5,5,.95) 0%,rgba(5,5,5,.3) 50%,transparent 100%);"></div><div class="absolute top-3 right-3 z-10 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.25);backdrop-filter:blur(8px);"><iconify-icon icon="lucide:file-check-2" width="16" style="color:#3b82f6;"></iconify-icon></div><div class="absolute bottom-0 left-0 right-0 p-5 z-10"><h3 class="font-medium text-lg mb-2">Examinations</h3><div class="flex flex-wrap gap-1.5"><span class="vis-tag vis-tag-green text-[10px] py-1 px-2"><iconify-icon icon="lucide:check" class="vis-tag-icon text-[10px]"></iconify-icon> Student ID</span><span class="vis-tag vis-tag-green text-[10px] py-1 px-2"><iconify-icon icon="lucide:check" class="vis-tag-icon text-[10px]"></iconify-icon> Neat Clothes</span><span class="vis-tag vis-tag-red text-[10px] py-1 px-2"><iconify-icon icon="lucide:x" class="vis-tag-icon text-[10px]"></iconify-icon> Hats</span><span class="vis-tag vis-tag-red text-[10px] py-1 px-2"><iconify-icon icon="lucide:x" class="vis-tag-icon text-[10px]"></iconify-icon> Sunglasses</span></div></div></div>
+        </div>
+        <div class="rounded-2xl overflow-hidden tilt-card" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);">
+          <div class="occasion-photo h-56 cursor-none relative" onclick="openLightbox('https://z-cdn-media.chatglm.cn/files/2e8d1e38-2cb8-4321-950c-0ea2ad573b8b.jpeg?auth_key=1878252603-60f6e02327874dd9bafb133135e76ee0-0-ca332396964d46708b39cf159fc07629','Ceremonies')"><img src="https://z-cdn-media.chatglm.cn/files/2e8d1e38-2cb8-4321-950c-0ea2ad573b8b.jpeg?auth_key=1878252603-60f6e02327874dd9bafb133135e76ee0-0-ca332396964d46708b39cf159fc07629" alt="Ceremony Formal Suit" loading="lazy" class="ceremony-img-custom" /><div class="occasion-gradient" style="background:linear-gradient(to top,rgba(5,5,5,.95) 0%,rgba(5,5,5,.3) 50%,transparent 100%);"></div><div class="absolute top-3 right-3 z-10 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.25);backdrop-filter:blur(8px);"><iconify-icon icon="lucide:award" width="16" style="color:#a78bfa;"></iconify-icon></div><div class="absolute bottom-0 left-0 right-0 p-5 z-10"><h3 class="font-medium text-lg mb-2">Ceremonies</h3><div class="flex flex-wrap gap-1.5"><span class="vis-tag vis-tag-green text-[10px] py-1 px-2"><iconify-icon icon="lucide:check" class="vis-tag-icon text-[10px]"></iconify-icon> Full Suit</span><span class="vis-tag vis-tag-green text-[10px] py-1 px-2"><iconify-icon icon="lucide:check" class="vis-tag-icon text-[10px]"></iconify-icon> Dress Shoes</span><span class="vis-tag vis-tag-red text-[10px] py-1 px-2"><iconify-icon icon="lucide:x" class="vis-tag-icon text-[10px]"></iconify-icon> Sneakers</span><span class="vis-tag vis-tag-red text-[10px] py-1 px-2"><iconify-icon icon="lucide:x" class="vis-tag-icon text-[10px]"></iconify-icon> Jeans</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="py-24 px-6 reveal">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="rounded-3xl p-12 md:p-16 relative overflow-hidden" style="border:1px solid rgba(124,58,237,.25);">
+        <div class="quote-bg" style="background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=80');"></div>
+        <div class="quote-gradient"></div>
+        <div class="relative z-10">
+          <iconify-icon icon="lucide:quote" width="40" style="color:rgba(124,58,237,.4);" class="mb-6 block"></iconify-icon>
+          <p class="font-serif text-2xl md:text-3xl italic leading-snug mb-6 text-neutral-200">"You never get a second chance to make a first impression. Dress like the innovator you're becoming."</p>
+          <div class="w-12 h-0.5 mx-auto mb-6 rounded-full" style="background:#7c3aed;"></div>
+          <p class="text-violet-400 text-sm font-medium tracking-[.3em] uppercase mb-6">Learn · Evolve · Innovate</p>
+          <div class="inline-block logo-black-bg"><img src="https://z-cdn-media.chatglm.cn/files/f13f2cac-b258-4d07-b6b7-6fc968f993c5.png?auth_key=1877594471-590858ac59f748deb007259e9651a911-0-52bcbf36cfbcce0f5b2ea10320ec5a7d" alt="Innovation University" class="h-8 object-contain" /></div>
+          <p class="text-neutral-500 text-sm font-light mt-3">Student Affairs Office</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-12 px-6" style="border-top:1px solid rgba(255,255,255,.04);">
+    <div class="max-w-6xl mx-auto flex flex-col items-center gap-6">
+      <div class="logo-black-bg-sm"><img src="https://z-cdn-media.chatglm.cn/files/f13f2cac-b258-4d07-b6b7-6fc968f993c5.png?auth_key=1877594471-590858ac59f748deb007259e9651a911-0-52bcbf36cfbcce0f5b2ea10320ec5a7d" alt="Logo" class="h-6 object-contain" /></div>
+      <div class="flex items-center gap-2 text-violet-400/50 text-xs uppercase tracking-[.3em] font-medium"><span>Learn</span><span>·</span><span>Evolve</span><span>·</span><span>Innovate</span></div>
+    </div>
+  </footer>
+
+  <script>
+    const dot=document.getElementById('cursor-dot'),ring=document.getElementById('cursor-ring'),spotlight=document.getElementById('spotlight');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx-4+'px';dot.style.top=my-4+'px';spotlight.style.left=mx-300+'px';spotlight.style.top=my-300+'px';});
+    function animateCursor(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;ring.style.left=rx-20+'px';ring.style.top=ry-20+'px';requestAnimationFrame(animateCursor);}animateCursor();
+    document.querySelectorAll('button,a,.tool-option,.gallery-item,.cat-photo,.occasion-photo,.lightbox-close,[onclick]').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hovering'));el.addEventListener('mouseleave',()=>ring.classList.remove('hovering'));});
+
+    const progressBar=document.getElementById('scroll-progress');
+    window.addEventListener('scroll',()=>{const s=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight;progressBar.style.width=(s/d*100)+'%';});
+
+    document.querySelectorAll('.tilt-card').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,rx2=(y-r.height/2)/(r.height/2)*-8,ry2=(x-r.width/2)/(r.width/2)*8;card.style.transform=`perspective(800px) rotateX(${rx2}deg) rotateY(${ry2}deg) scale3d(1.02,1.02,1.02)`;});card.addEventListener('mouseleave',()=>{card.style.transform='perspective(800px) rotateX(0) rotateY(0) scale3d(1,1,1)';});});
+
+    function switchTab(tabName){document.querySelectorAll('.tab-panel').forEach(p=>p.classList.add('hidden'));const target=document.getElementById('tab-'+tabName);if(target){target.classList.remove('hidden');target.style.opacity='0';target.style.transform='translateY(15px)';requestAnimationFrame(()=>{target.style.transition='all .5s ease';target.style.opacity='1';target.style.transform='translateY(0)';});}document.querySelectorAll('.tab-btn').forEach(btn=>{btn.classList.remove('active');if(btn.dataset.tab===tabName)btn.classList.add('active');});}
+
+    const ceremonyImgUrl = 'https://z-cdn-media.chatglm.cn/files/2e8d1e38-2cb8-4321-950c-0ea2ad573b8b.jpeg?auth_key=1878252603-60f6e02327874dd9bafb133135e76ee0-0-ca332396964d46708b39cf159fc07629';
+    
+    const dressData={
+      lecture:{icon:'lucide:presentation',color:'#22c55e',bg:'rgba(34,197,94,.12)',border:'rgba(34,197,94,.25)',badge:'Smart Casual',badgeBg:'rgba(34,197,94,.15)',badgeColor:'#22c55e',title:'Lecture Hall',role:'Student',img:'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80',wear:[{icon:'lucide:shirt',text:'Polo / Collar'},{icon:'lucide:scissors',text:'Chinos'},{icon:'lucide:footprints',text:'Sneakers'},{icon:'lucide:snowflake',text:'Light Layer'}],avoid:[{icon:'lucide:scissors',text:'Shorts'},{icon:'lucide:footprints',text:'Flip Flops'},{icon:'lucide:type',text:'Graphic Tees'},{icon:'lucide:wind',text:'Ripped Jeans'}]},
+      lab:{icon:'lucide:flask-conical',color:'#ef4444',bg:'rgba(239,68,68,.12)',border:'rgba(239,68,68,.25)',badge:'Safety First',badgeBg:'rgba(239,68,68,.15)',badgeColor:'#ef4444',title:'Laboratory Session',role:'Lab Participant',img:'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80',wear:[{icon:'lucide:scissors',text:'Long Pants'},{icon:'lucide:footprints',text:'Closed Shoes'},{icon:'lucide:shield',text:'Lab Coat'},{icon:'lucide:lock',text:'Tied Hair'}],avoid:[{icon:'lucide:scissors',text:'Shorts/Skirts'},{icon:'lucide:footprints',text:'Sandals'},{icon:'lucide:sparkles',text:'Loose Sleeves'},{icon:'lucide:gem',text:'Jewelry'}]},
+      exam:{icon:'lucide:file-check-2',color:'#3b82f6',bg:'rgba(59,130,246,.12)',border:'rgba(59,130,246,.25)',badge:'Smart Casual',badgeBg:'rgba(59,130,246,.15)',badgeColor:'#3b82f6',title:'Examination Hall',role:'Exam Taker',img:'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80',wear:[{icon:'lucide:shirt',text:'Neat Shirt'},{icon:'lucide:credit-card',text:'Student ID'},{icon:'lucide:scissors',text:'Trousers'},{icon:'lucide:minus',text:'Minimal Items'}],avoid:[{icon:'lucide:hat',text:'Hats/Caps'},{icon:'lucide:sun',text:'Sunglasses'},{icon:'lucide:volume-2',text:'Loud Accessories'},{icon:'lucide:hood',text:'Hoodies Up'}]},
+      ceremony:{icon:'lucide:award',color:'#a78bfa',bg:'rgba(124,58,237,.12)',border:'rgba(124,58,237,.25)',badge:'Formal',badgeBg:'rgba(124,58,237,.15)',badgeColor:'#a78bfa',title:'University Ceremony',role:'Graduate / Honoree',img:ceremonyImgUrl,wear:[{icon:'lucide:shirt',text:'Full Suit / Dress'},{icon:'lucide:footprints',text:'Dress Shoes'},{icon:'lucide:palette',text:'Dark Colors'},{icon:'lucide:graduation-cap',text:'Regalia'}],avoid:[{icon:'lucide:footprints',text:'Sneakers'},{icon:'lucide:scissors',text:'Jeans'},{icon:'lucide:palette',text:'Bright Colors'},{icon:'lucide:sparkles',text:'Revealing Clothes'}]},
+      library:{icon:'lucide:book-open',color:'#a78bfa',bg:'rgba(124,58,237,.12)',border:'rgba(124,58,237,.25)',badge:'Casual',badgeBg:'rgba(129,140,248,.12)',badgeColor:'#818cf8',title:'Library & Study',role:'Student',img:'https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80',wear:[{icon:'lucide:shirt',text:'T-Shirt / Hoodie'},{icon:'lucide:scissors',text:'Jeans'},{icon:'lucide:footprints',text:'Sneakers'},{icon:'lucide:snowflake',text:'Warm Layer'}],avoid:[{icon:'lucide:volume-2',text:'Loud Clothes'},{icon:'lucide:moon',text:'Sleepwear'},{icon:'lucide:footprints',text:'Bare Feet'},{icon:'lucide:type',text:'Offensive Prints'}]},
+      club:{icon:'lucide:users',color:'#22c55e',bg:'rgba(34,197,94,.12)',border:'rgba(34,197,94,.25)',badge:'Smart Casual',badgeBg:'rgba(34,197,94,.15)',badgeColor:'#22c55e',title:'Club Meeting',role:'Member',img:'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80',wear:[{icon:'lucide:shirt',text:'Collar Shirt'},{icon:'lucide:scissors',text:'Dark Jeans'},{icon:'lucide:footprints',text:'Clean Shoes'},{icon:'lucide:credit-card',text:'Student ID'}],avoid:[{icon:'lucide:dumbbell',text:'Athletic Wear'},{icon:'lucide:scissors',text:'Ripped Clothes'},{icon:'lucide:footprints',text:'Beach Sandals'},{icon:'lucide:wind',text:'Gym Clothes'}]},
+      sports:{icon:'lucide:dumbbell',color:'#3b82f6',bg:'rgba(59,130,246,.12)',border:'rgba(59,130,246,.25)',badge:'Athletic',badgeBg:'rgba(59,130,246,.15)',badgeColor:'#3b82f6',title:'Sports & Gym',role:'Athlete',img:'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80',wear:[{icon:'lucide:shirt',text:'Sports Top'},{icon:'lucide:scissors',text:'Shorts / Leggings'},{icon:'lucide:footprints',text:'Athletic Shoes'},{icon:'lucide:droplets',text:'Towel & Water'}],avoid:[{icon:'lucide:scissors',text:'Jeans'},{icon:'lucide:footprints',text:'Open Shoes'},{icon:'lucide:shirt',text:'Cotton Tees'},{icon:'lucide:clock',text:'Unchanged After'}]},
+      presentation:{icon:'lucide:mic',color:'#f59e0b',bg:'rgba(245,158,11,.12)',border:'rgba(245,158,11,.25)',badge:'Formal',badgeBg:'rgba(245,158,11,.15)',badgeColor:'#f59e0b',title:'Formal Presentation',role:'Presenter',img:'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80',wear:[{icon:'lucide:shirt',text:'Blazer / Suit'},{icon:'lucide:ribbon',text:'Tie'},{icon:'lucide:footprints',text:'Polished Shoes'},{icon:'lucide:sparkles',text:'Neat Grooming'}],avoid:[{icon:'lucide:scissors',text:'Jeans'},{icon:'lucide:shirt',text:'T-Shirts'},{icon:'lucide:footprints',text:'Sneakers'},{icon:'lucide:palette',text:'Flashy Jewelry'}]}
+    };
+    
+    function selectOccasion(btn){
+      document.querySelectorAll('.tool-option').forEach(b=>b.classList.remove('selected'));
+      btn.classList.add('selected');
+      const d=dressData[btn.dataset.occasion],result=document.getElementById('tool-result');
+      
+      document.getElementById('result-img').src=d.img;
+      document.getElementById('result-title-tool').textContent=d.title;
+      document.getElementById('result-badge-tool').textContent=d.badge;
+      document.getElementById('result-badge-tool').style.background=d.badgeBg;
+      document.getElementById('result-badge-tool').style.color=d.badgeColor;
+      document.getElementById('result-role-tool').innerHTML=`<iconify-icon icon="lucide:user" width="12" class="mr-1 align-middle"></iconify-icon>${d.role}`;
+      
+      document.getElementById('result-wear').innerHTML=d.wear.map(i=>`<div class="vis-tag vis-tag-green"><iconify-icon icon="${i.icon}" class="vis-tag-icon"></iconify-icon>${i.text}</div>`).join('');
+      document.getElementById('result-avoid').innerHTML=d.avoid.map(i=>`<div class="vis-tag vis-tag-red"><iconify-icon icon="${i.icon}" class="vis-tag-icon"></iconify-icon>${i.text}</div>`).join('');
+      
+      result.style.opacity='0';result.style.transform='translateY(16px)';result.style.pointerEvents='none';
+      setTimeout(()=>{result.style.opacity='1';result.style.transform='translateY(0)';result.style.pointerEvents='auto';},100);
+    }
+
+    function openLightbox(src,caption){const lb=document.getElementById('lightbox'),img=document.getElementById('lightbox-img'),cap=document.getElementById('lightbox-caption');img.src=src;cap.textContent=caption||'';lb.classList.add('active');document.body.style.overflow='hidden';}
+    function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow='';}
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+
+    // Stats Counter Logic
+    const statNumbers=document.querySelectorAll('.stat-number');let countersStarted=false;
+    const counterObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting&&!countersStarted){countersStarted=true;statNumbers.forEach(el=>{const target=parseInt(el.dataset.target);let current=0;const timer=setInterval(()=>{current+=target/40;if(current>=target){current=target;clearInterval(timer);}el.textContent=Math.round(current);},30);});}});},{threshold:.5});
+    statNumbers.forEach(el=>counterObserver.observe(el));
+
+    const revealElements=document.querySelectorAll('.reveal');const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible');});},{threshold:.1,rootMargin:'0px 0px -50px 0px'});revealElements.forEach(el=>revealObserver.observe(el));
+    document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener('click',function(e){e.preventDefault();const target=document.querySelector(this.getAttribute('href'));if(target)target.scrollIntoView({behavior:'smooth',block:'start'});});});
+  </script>
+</body>
+</html>
